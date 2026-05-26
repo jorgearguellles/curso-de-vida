@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa Conceptual – Desarrollo Humano en Los Simpson</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<style>
+  :root {
+    --purple-50: #EEEDFE; --purple-100: #CECBF6; --purple-200: #AFA9EC;
+    --purple-400: #7F77DD; --purple-600: #534AB7; --purple-800: #3C3489; --purple-900: #26215C;
+    --teal-50: #E1F5EE; --teal-100: #9FE1CB; --teal-200: #5DCAA5;
+    --teal-400: #1D9E75; --teal-600: #0F6E56; --teal-800: #085041;
+    --coral-50: #FAECE7; --coral-100: #F5C4B3; --coral-200: #F0997B;
+    --coral-400: #D85A30; --coral-600: #993C1D; --coral-800: #712B13;
+    --amber-50: #FAEEDA; --amber-100: #FAC775; --amber-200: #EF9F27;
+    --amber-400: #BA7517; --amber-600: #854F0B; --amber-800: #633806;
+    --gray-50: #F1EFE8; --gray-100: #D3D1C7; --gray-200: #B4B2A9;
+    --gray-400: #888780; --gray-600: #5F5E5A; --gray-800: #444441;
+    --blue-50: #E6F1FB; --blue-100: #B5D4F4; --blue-400: #378ADD;
+    --blue-600: #185FA5; --blue-800: #0C447C;
+
+    --bg: #ffffff;
+    --bg2: #f7f6f2;
+    --text-primary: #1a1a18;
+    --text-secondary: #5F5E5A;
+    --text-muted: #888780;
+    --border: rgba(0,0,0,0.12);
+    --border-strong: rgba(0,0,0,0.22);
+    --sans: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --purple-50: #26215C; --purple-100: #3C3489; --purple-200: #534AB7;
+      --purple-400: #7F77DD; --purple-600: #AFA9EC; --purple-800: #CECBF6; --purple-900: #EEEDFE;
+      --teal-50: #04342C; --teal-100: #085041; --teal-200: #0F6E56;
+      --teal-400: #1D9E75; --teal-600: #5DCAA5; --teal-800: #9FE1CB;
+      --coral-50: #4A1B0C; --coral-100: #712B13; --coral-200: #993C1D;
+      --coral-400: #D85A30; --coral-600: #F0997B; --coral-800: #F5C4B3;
+      --amber-50: #412402; --amber-100: #633806; --amber-200: #854F0B;
+      --amber-400: #BA7517; --amber-600: #EF9F27; --amber-800: #FAC775;
+      --gray-50: #2C2C2A; --gray-100: #444441; --gray-200: #5F5E5A;
+      --gray-400: #888780; --gray-600: #B4B2A9; --gray-800: #D3D1C7;
+      --blue-50: #042C53; --blue-100: #0C447C; --blue-400: #378ADD;
+      --blue-600: #85B7EB; --blue-800: #B5D4F4;
+      --bg: #1a1a18; --bg2: #242422;
+      --text-primary: #f0efe8; --text-secondary: #B4B2A9;
+      --text-muted: #888780;
+      --border: rgba(255,255,255,0.1); --border-strong: rgba(255,255,255,0.2);
+    }
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    font-family: var(--sans);
+    color: var(--text-primary);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* ─── HEADER ─────────────────────────────────────────── */
+  .header {
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 40px 48px 32px;
+    text-align: center;
+    position: relative;
+  }
+  .header-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--purple-600);
+    background: var(--purple-50);
+    border: 1px solid var(--purple-100);
+    border-radius: 20px;
+    padding: 4px 14px;
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.25;
+    max-width: 680px;
+    margin: 0 auto 10px;
+  }
+  .header p {
+    font-size: 14px;
+    color: var(--text-secondary);
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  .header-meta {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .header-meta span {
+    font-size: 12px;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .header-meta i { font-size: 14px; }
+
+  /* ─── CENTRAL NODE ───────────────────────────────────── */
+  .central-wrap {
+    display: flex;
+    justify-content: center;
+    padding: 40px 48px 0;
+    position: relative;
+  }
+  .central-node {
+    background: var(--purple-50);
+    border: 2px solid var(--purple-200);
+    border-radius: 20px;
+    padding: 28px 40px;
+    text-align: center;
+    max-width: 400px;
+    position: relative;
+    z-index: 2;
+  }
+  .central-node .label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--purple-600);
+    margin-bottom: 8px;
+  }
+  .central-node h2 {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--purple-800);
+    line-height: 1.3;
+  }
+  .central-node p {
+    font-size: 13px;
+    color: var(--purple-600);
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  /* ─── FRAMEWORK ROW ──────────────────────────────────── */
+  .framework-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2px;
+    margin: 0 48px;
+    padding-top: 2px;
+    border-top: none;
+  }
+  .fw-connector {
+    display: flex;
+    justify-content: center;
+    padding: 12px 48px 0;
+    gap: 2px;
+  }
+  .fw-connector-line {
+    width: 1px;
+    height: 32px;
+    background: var(--border-strong);
+    flex-shrink: 0;
+  }
+  .fw-connector-spread {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 200px;
+    margin: 8px 48px 0;
+    position: relative;
+  }
+  .fw-connector-spread::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 200px; right: 200px;
+    height: 1px;
+    background: var(--border-strong);
+  }
+  .fw-connector-spread .arm {
+    width: 1px;
+    height: 24px;
+    background: var(--border-strong);
+  }
+
+  /* ─── SECTION CARD ───────────────────────────────────── */
+  .sections-wrap {
+    padding: 0 48px 0;
+    margin-top: 0;
+  }
+  .section-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border-strong);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .section-card {
+    padding: 28px 26px;
+    border-right: 1px solid var(--border);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .section-card:last-child { border-right: none; }
+
+  .section-card.bart { background: var(--teal-50); }
+  .section-card.abe  { background: var(--amber-50); }
+  .section-card.lisa { background: var(--coral-50); }
+
+  .character-head {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .char-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    flex-shrink: 0;
+  }
+  .bart .char-icon { background: var(--teal-100); color: var(--teal-800); }
+  .abe  .char-icon { background: var(--amber-100); color: var(--amber-800); }
+  .lisa .char-icon { background: var(--coral-100); color: var(--coral-800); }
+
+  .char-info { flex: 1; }
+  .char-name {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  .bart .char-name { color: var(--teal-800); }
+  .abe  .char-name { color: var(--amber-800); }
+  .lisa .char-name { color: var(--coral-800); }
+
+  .char-episode {
+    font-size: 11px;
+    margin-top: 3px;
+  }
+  .bart .char-episode { color: var(--teal-600); }
+  .abe  .char-episode { color: var(--amber-600); }
+  .lisa .char-episode { color: var(--coral-600); }
+
+  .char-stage {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 20px;
+    padding: 3px 10px;
+    margin-top: 6px;
+  }
+  .bart .char-stage { background: var(--teal-100); color: var(--teal-800); }
+  .abe  .char-stage { background: var(--amber-100); color: var(--amber-800); }
+  .lisa .char-stage { background: var(--coral-100); color: var(--coral-800); }
+
+  /* Dimensions */
+  .dims-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .dim-item {
+    border-radius: 10px;
+    padding: 12px 14px;
+    border-left: 3px solid transparent;
+  }
+  .bart .dim-item {
+    background: rgba(29,158,117,0.09);
+    border-left-color: var(--teal-400);
+  }
+  .abe .dim-item {
+    background: rgba(186,117,23,0.09);
+    border-left-color: var(--amber-400);
+  }
+  .lisa .dim-item {
+    background: rgba(216,90,48,0.09);
+    border-left-color: var(--coral-400);
+  }
+
+  .dim-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .bart .dim-label { color: var(--teal-600); }
+  .abe  .dim-label { color: var(--amber-600); }
+  .lisa .dim-label { color: var(--coral-600); }
+
+  .dim-content {
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+  .dim-content strong {
+    color: var(--text-primary);
+    font-weight: 500;
+  }
+
+  /* ─── THEORIES ROW ───────────────────────────────────── */
+  .theories-wrap {
+    padding: 0 48px;
+    margin-top: 28px;
+  }
+  .theories-header {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  .theories-header .section-title {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+  .theories-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .theory-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .theory-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--purple-800);
+    margin-bottom: 6px;
+  }
+  .theory-concept {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--purple-600);
+    margin-bottom: 8px;
+  }
+  .theory-desc {
+    font-size: 12px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+  .theory-applied {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-muted);
+    line-height: 1.4;
+  }
+  .theory-applied strong {
+    color: var(--purple-600);
+    font-weight: 500;
+  }
+
+  /* ─── GRIEF MODEL ────────────────────────────────────── */
+  .grief-wrap {
+    padding: 0 48px;
+    margin-top: 28px;
+  }
+  .grief-stages-row {
+    display: flex;
+    gap: 6px;
+    align-items: stretch;
+  }
+  .grief-stage {
+    flex: 1;
+    border-radius: 10px;
+    padding: 14px 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  .grief-stage::after {
+    content: '›';
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: var(--text-muted);
+    z-index: 2;
+  }
+  .grief-stage:last-child::after { display: none; }
+
+  .grief-stage.s1 { background: var(--gray-50); }
+  .grief-stage.s2 { background: var(--blue-50); }
+  .grief-stage.s3 { background: var(--purple-50); }
+  .grief-stage.s4 { background: var(--coral-50); }
+  .grief-stage.s5 { background: var(--teal-50); }
+
+  .grief-num {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .s1 .grief-num { color: var(--gray-400); }
+  .s2 .grief-num { color: var(--blue-400); }
+  .s3 .grief-num { color: var(--purple-400); }
+  .s4 .grief-num { color: var(--coral-400); }
+  .s5 .grief-num { color: var(--teal-400); }
+
+  .grief-name {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 5px;
+  }
+  .s1 .grief-name { color: var(--gray-800); }
+  .s2 .grief-name { color: var(--blue-800); }
+  .s3 .grief-name { color: var(--purple-800); }
+  .s4 .grief-name { color: var(--coral-800); }
+  .s5 .grief-name { color: var(--teal-800); }
+
+  .grief-lisa {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+  .s1 .grief-lisa { color: var(--gray-600); }
+  .s2 .grief-lisa { color: var(--blue-600); }
+  .s3 .grief-lisa { color: var(--purple-600); }
+  .s4 .grief-lisa { color: var(--coral-600); }
+  .s5 .grief-lisa { color: var(--teal-600); }
+
+  /* ─── BIOPSYCHOSOCIAL ────────────────────────────────── */
+  .bio-wrap {
+    padding: 0 48px;
+    margin-top: 28px;
+  }
+  .bio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .bio-cell {
+    background: var(--bg);
+    padding: 20px 22px;
+  }
+  .bio-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+  .bio-cell:nth-child(1) .bio-icon { background: var(--coral-50); color: var(--coral-600); }
+  .bio-cell:nth-child(2) .bio-icon { background: var(--purple-50); color: var(--purple-600); }
+  .bio-cell:nth-child(3) .bio-icon { background: var(--teal-50); color: var(--teal-600); }
+  .bio-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 6px;
+  }
+  .bio-desc {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* ─── CONCLUSIONS ────────────────────────────────────── */
+  .conclusions-wrap {
+    padding: 0 48px;
+    margin-top: 28px;
+  }
+  .conclusions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .conclusion-card {
+    border-radius: 12px;
+    padding: 18px 20px;
+    border: 1px solid transparent;
+  }
+  .conclusion-card.c1 { background: var(--teal-50); border-color: var(--teal-100); }
+  .conclusion-card.c2 { background: var(--amber-50); border-color: var(--amber-100); }
+  .conclusion-card.c3 { background: var(--coral-50); border-color: var(--coral-100); }
+
+  .conclusion-char {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .c1 .conclusion-char { color: var(--teal-600); }
+  .c2 .conclusion-char { color: var(--amber-600); }
+  .c3 .conclusion-char { color: var(--coral-600); }
+
+  .conclusion-insight {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    line-height: 1.35;
+  }
+  .conclusion-text {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
+  /* ─── SECTION LABELS ─────────────────────────────────── */
+  .section-label-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 28px 48px 12px;
+  }
+  .section-label-row .line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .section-label-row .lbl {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    white-space: nowrap;
+  }
+
+  /* ─── CONNECTOR VISUAL ───────────────────────────────── */
+  .connector-row {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0 48px;
+    position: relative;
+    height: 40px;
+    margin-top: -2px;
+  }
+  .connector-row svg {
+    width: 100%;
+    height: 40px;
+    overflow: visible;
+  }
+
+  /* ─── FOOTER ─────────────────────────────────────────── */
+  .footer {
+    margin-top: 36px;
+    padding: 24px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .footer-left {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .footer-right {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .footer-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    border-radius: 20px;
+    padding: 4px 12px;
+  }
+
+  /* ─── AGEING BOX ─────────────────────────────────────── */
+  .needs-wrap {
+    padding: 0 48px;
+    margin-top: 28px;
+  }
+  .needs-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  .need-pill {
+    background: var(--amber-50);
+    border: 1px solid var(--amber-100);
+    border-radius: 10px;
+    padding: 14px 16px;
+    text-align: center;
+  }
+  .need-pill .need-icon {
+    font-size: 20px;
+    color: var(--amber-400);
+    margin-bottom: 6px;
+  }
+  .need-pill .need-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--amber-800);
+    margin-bottom: 4px;
+  }
+  .need-pill .need-desc {
+    font-size: 11px;
+    color: var(--amber-600);
+    line-height: 1.45;
+  }
+
+  /* ─── BRIDGE ─────────────────────────────────────────── */
+  .bridge-wrap {
+    margin: 28px 48px 0;
+    background: linear-gradient(135deg, var(--purple-50) 0%, var(--teal-50) 100%);
+    border: 1px solid var(--purple-100);
+    border-radius: 16px;
+    padding: 24px 32px;
+  }
+  .bridge-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--purple-800);
+    margin-bottom: 10px;
+  }
+  .bridge-text {
+    font-size: 12px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    max-width: 820px;
+  }
+  .bridge-tags {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .bridge-tag {
+    font-size: 11px;
+    font-weight: 500;
+    border-radius: 20px;
+    padding: 4px 12px;
+    background: rgba(83,74,183,0.12);
+    color: var(--purple-600);
+    border: 1px solid var(--purple-100);
+  }
+
+  @media (max-width: 800px) {
+    .section-grid,
+    .theories-grid,
+    .conclusions-grid,
+    .needs-row,
+    .bio-grid { grid-template-columns: 1fr; }
+    .grief-stages-row { flex-direction: column; }
+    .grief-stage::after { display: none; }
+    .header, .sections-wrap, .theories-wrap, .grief-wrap,
+    .bio-wrap, .conclusions-wrap, .needs-wrap,
+    .section-label-row, .connector-row, .bridge-wrap { padding-left: 20px; padding-right: 20px; }
+    .bridge-wrap { margin-left: 20px; margin-right: 20px; }
+    .footer { padding: 20px; }
+    .header { padding: 28px 20px 24px; }
+    .framework-row, .fw-connector-spread { padding-left: 20px; padding-right: 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-tag">Mapa Conceptual · Psicología y Curso de Vida</div>
+  <h1>Desarrollo humano en Los Simpson:<br>infancia, vejez y duelo</h1>
+  <p>Análisis biopsicosocial de tres episodios a través de cuatro dimensiones del desarrollo</p>
+  <div class="header-meta">
+    <span><i class="ti ti-user" aria-hidden="true"></i> Jorge Alberto Arias Argüelles</span>
+    <span><i class="ti ti-school" aria-hidden="true"></i> Psicología – UNAD</span>
+    <span><i class="ti ti-calendar" aria-hidden="true"></i> Mayo 2026</span>
+    <span><i class="ti ti-book" aria-hidden="true"></i> Código 402537617</span>
+  </div>
+</div>
+
+<!-- CENTRAL CONCEPT -->
+<div class="central-wrap">
+  <div class="central-node">
+    <div class="label">Concepto central</div>
+    <h2>Desarrollo humano a lo largo del ciclo vital</h2>
+    <p>Perspectiva biopsicosocial: biología · emociones · contexto</p>
+  </div>
+</div>
+
+<!-- CONNECTOR -->
+<div class="connector-row">
+  <svg viewBox="0 0 900 40" preserveAspectRatio="none">
+    <line x1="450" y1="0" x2="150" y2="40" stroke="var(--border-strong)" stroke-width="1"/>
+    <line x1="450" y1="0" x2="450" y2="40" stroke="var(--border-strong)" stroke-width="1"/>
+    <line x1="450" y1="0" x2="750" y2="40" stroke="var(--border-strong)" stroke-width="1"/>
+  </svg>
+</div>
+
+<!-- THREE CHARACTER CARDS -->
+<div class="sections-wrap">
+  <div class="section-grid">
+
+    <!-- BART -->
+    <div class="section-card bart">
+      <div class="character-head">
+        <div class="char-icon"><i class="ti ti-skateboard" aria-hidden="true"></i></div>
+        <div class="char-info">
+          <div class="char-name">Bart Simpson</div>
+          <div class="char-episode">Barthood · T27E9</div>
+          <div class="char-stage">Infancia → Adultez temprana</div>
+        </div>
+      </div>
+      <div class="dims-list">
+        <div class="dim-item">
+          <div class="dim-label">Emocional</div>
+          <div class="dim-content"><strong>Herida acumulativa</strong> por invisibilidad paterna. Rebeldía adolescente → resiliencia adulta. El mural como integración, no como borrado.</div>
+        </div>
+        <div class="dim-item">
+          <div class="dim-label">Cognitiva</div>
+          <div class="dim-content"><strong>Inteligencia práctica y espacial.</strong> Aprende haciendo, no en el aula. Dificultades con la lectura ≠ incapacidad. Pensamiento diferente, no inferior.</div>
+        </div>
+        <div class="dim-item">
+          <div class="dim-label">Social y cultural</div>
+          <div class="dim-content"><strong>Vínculo con Abe</strong> como contrapeso al vacío de Homer. Clase trabajadora: éxito = rendimiento escolar. Resistencia cultural modesta pero genuina.</div>
+        </div>
+        <div class="dim-item">
+          <div class="dim-label">Identidad y autonomía</div>
+          <div class="dim-content"><strong>Identidad negativa</strong> durante años (lo que NO es). Autonomía narrativa en el mural: su historia, sus palabras. Integración con Lisa, no resentimiento.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ABE -->
+    <div class="section-card abe">
+      <div class="character-head">
+        <div class="char-icon"><i class="ti ti-steering-wheel" aria-hidden="true"></i></div>
+        <div class="char-info">
+          <div class="char-name">Abe Simpson</div>
+          <div class="char-episode">El viejo y el amar · T13E13</div>
+          <div class="char-stage">Vejez</div>
+        </div>
+      </div>
+      <div class="dims-list">
+        <div class="dim-item">
+          <div class="dim-label">Emocional</div>
+          <div class="dim-content"><strong>Soledad institucionalizada.</strong> Atracción por Zelda = deseo de conexión, no capricho. El rechazo no colapsa: sabiduría acumulada, no resignación.</div>
+        </div>
+        <div class="dim-item">
+          <div class="dim-label">Cognitiva</div>
+          <div class="dim-content"><strong>Envejecimiento selectivo y compensatorio.</strong> Menos velocidad, más experiencia. Planea, evalúa, actúa con coherencia. Contradice el estereotipo de deterioro inevitable.</div>
+        </div>
+        <div class="dim-item">
+          <div class="dim-label">Social y cultural</div>
+          <div class="dim-content"><strong>Edadismo de Homer:</strong> infantilización sin maldad. Residencia = microcosmos del apartamiento social. Inversión de roles hijo-padre con consecuencias reales.</div>
+        </div>
+        <div class="dim-item">
+          <div class="dim-label">Identidad y autonomía</div>
+          <div class="dim-content"><strong>Conducir = declaración de existencia.</strong> Quitarle las llaves ≠ quitar el automóvil. Lucha por el control de la propia historia, legítima a cualquier edad.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LISA -->
+    <div class="section-card lisa">
+      <div class="character-head">
+        <div class="char-icon"><i class="ti ti-music" aria-hidden="true"></i></div>
+        <div class="char-info">
+          <div class="char-name">Lisa Simpson</div>
+          <div class="char-episode">La ciudad de Springfield · T6E22</div>
+          <div class="char-stage">Duelo infantil</div>
+        </div>
+      </div>
+      <div class="dims-list">
+        <div class="dim-item">
+          <div class="dim-label">Emocional</div>
+          <div class="dim-content"><strong>Pérdida doble:</strong> Murphy como persona + espacio de reconocimiento musical. Ira ante la indiferencia colectiva. El jazz como forma legítima de procesar el dolor.</div>
+        </div>
+        <div class="dim-item">
+          <div class="dim-label">Cognitiva</div>
+          <div class="dim-content"><strong>Comprensión de la muerte como irreversible.</strong> Respuesta simbólica y estratégica: conseguir el álbum → legado. Madurez cognitiva por encima de la edad esperada.</div>
+        </div>
+        <div class="dim-item">
+          <div class="dim-label">Social y cultural</div>
+          <div class="dim-content"><strong>Duelo no reconocido socialmente.</strong> Springfield no valida su pérdida. Bart, figura protectora inesperada: 500 dólares sin calcular. La familia falla; el hermano sorprende.</div>
+        </div>
+        <div class="dim-item">
+          <div class="dim-label">Identidad y autonomía</div>
+          <div class="dim-content"><strong>Murphy era su espejo</strong> como músico. La pérdida refuerza la identidad: asiste sola al funeral, gestiona el álbum, toca en homenaje. Autonomía sin apoyo externo.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- THEORIES -->
+<div class="section-label-row">
+  <div class="line"></div>
+  <div class="lbl">Teorías del desarrollo aplicadas</div>
+  <div class="line"></div>
+</div>
+
+<div class="theories-wrap">
+  <div class="theories-grid">
+
+    <div class="theory-card">
+      <div class="theory-name">Erik Erikson</div>
+      <div class="theory-concept">Crisis del ciclo vital</div>
+      <div class="theory-desc">El desarrollo avanza resolviendo tensiones en cada etapa. La no-resolución deja huellas que reaparecen más adelante.</div>
+      <div class="theory-applied"><strong>En Bart:</strong> crisis de competencia e identidad extendida → resuelto con el taller y el mural. <strong>En Abe:</strong> necesidad de integridad vs. desesperación.</div>
+    </div>
+
+    <div class="theory-card">
+      <div class="theory-name">Jean Piaget</div>
+      <div class="theory-concept">Estadios del pensamiento</div>
+      <div class="theory-desc">El pensamiento infantil no es adulto incompleto. Es cualitativamente distinto. El aprendizaje es activo y contextual.</div>
+      <div class="theory-applied"><strong>En Bart:</strong> inteligencia práctica ignorada por el sistema escolar. <strong>En Lisa:</strong> pensamiento formal que genera respuesta simbólica ante la muerte.</div>
+    </div>
+
+    <div class="theory-card">
+      <div class="theory-name">Lev Vygotsky</div>
+      <div class="theory-concept">Zona de desarrollo próximo</div>
+      <div class="theory-desc">Nadie se desarrolla solo. El andamiaje de un otro significativo hace posible lo que aún no podemos alcanzar solos.</div>
+      <div class="theory-applied"><strong>En Bart:</strong> Abe como andamiaje afectivo; sin ese vínculo, el destino cambia. <strong>En Lisa:</strong> Murphy como mediador cultural hacia el jazz.</div>
+    </div>
+
+    <div class="theory-card">
+      <div class="theory-name">Papalia y Martorell</div>
+      <div class="theory-concept">Desarrollo humano integral</div>
+      <div class="theory-desc">El ciclo vital no termina en la adultez. Cada etapa tiene tareas, recursos y desafíos propios que merecen análisis serio.</div>
+      <div class="theory-applied"><strong>En Abe:</strong> percepción de control = predictor de bienestar en vejez. Pérdida del automóvil como pérdida de control.</div>
+    </div>
+
+    <div class="theory-card">
+      <div class="theory-name">Kübler-Ross</div>
+      <div class="theory-concept">Cinco etapas del duelo</div>
+      <div class="theory-desc">La pérdida sigue una estructura reconocible: negación, ira, negociación, depresión y aceptación. No lineal, sí identificable.</div>
+      <div class="theory-applied"><strong>En Lisa:</strong> cada etapa visible en el episodio. La aceptación llega cuando el álbum se transmite y la pérdida se transforma en legado.</div>
+    </div>
+
+    <div class="theory-card">
+      <div class="theory-name">García Arce & Bellver</div>
+      <div class="theory-concept">Duelo en infancia</div>
+      <div class="theory-desc">Una figura significativa que valide el dolor del niño es factor protector fundamental en el duelo infantil.</div>
+      <div class="theory-applied"><strong>En Lisa:</strong> duelo no validado por Springfield ni la familia. Bart cumple esa función protectora de manera inesperada y decisiva.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- GRIEF MODEL FOR LISA -->
+<div class="section-label-row">
+  <div class="line"></div>
+  <div class="lbl">Modelo Kübler-Ross · Proceso de Lisa Simpson</div>
+  <div class="line"></div>
+</div>
+
+<div class="grief-wrap">
+  <div class="grief-stages-row">
+    <div class="grief-stage s1">
+      <div class="grief-num">01</div>
+      <div class="grief-name">Negación</div>
+      <div class="grief-lisa">Silencio incrédulo al descubrir la muerte. Desconexión momentánea de la realidad.</div>
+    </div>
+    <div class="grief-stage s2">
+      <div class="grief-num">02</div>
+      <div class="grief-name">Ira</div>
+      <div class="grief-lisa">Indignación ante la indiferencia de Springfield. Ira como forma de amor.</div>
+    </div>
+    <div class="grief-stage s3">
+      <div class="grief-num">03</div>
+      <div class="grief-name">Negociación</div>
+      <div class="grief-lisa">Busca transmitir el álbum. Bart entrega 500 dólares. El apoyo cambia el proceso.</div>
+    </div>
+    <div class="grief-stage s4">
+      <div class="grief-num">04</div>
+      <div class="grief-name">Depresión</div>
+      <div class="grief-lisa">Funeral en soledad. Nadie más asiste. Duelo sin validación social.</div>
+    </div>
+    <div class="grief-stage s5">
+      <div class="grief-num">05</div>
+      <div class="grief-name">Aceptación</div>
+      <div class="grief-lisa">El álbum se transmite. Murphy asiente. La pérdida se convierte en legado musical.</div>
+    </div>
+  </div>
+</div>
+
+<!-- VEJEZ NEEDS -->
+<div class="section-label-row">
+  <div class="line"></div>
+  <div class="lbl">Necesidades en la vejez · Abe Simpson</div>
+  <div class="line"></div>
+</div>
+
+<div class="needs-wrap">
+  <div class="needs-row">
+    <div class="need-pill">
+      <div class="need-icon"><i class="ti ti-heart" aria-hidden="true"></i></div>
+      <div class="need-title">Necesidad afectiva</div>
+      <div class="need-desc">El deseo de conexión íntima no tiene fecha de vencimiento. Zelda = buscar que alguien lo prefiera.</div>
+    </div>
+    <div class="need-pill">
+      <div class="need-icon"><i class="ti ti-user-check" aria-hidden="true"></i></div>
+      <div class="need-title">Necesidad de autonomía</div>
+      <div class="need-desc">Conducir = independencia, no transporte. Control sobre la propia vida como predictor de bienestar.</div>
+    </div>
+    <div class="need-pill">
+      <div class="need-icon"><i class="ti ti-users" aria-hidden="true"></i></div>
+      <div class="need-title">Necesidad de rol social</div>
+      <div class="need-desc">Fue soldado, padre, ciudadano. Reducirlo al rol pasivo de "residente" erosiona su identidad histórica.</div>
+    </div>
+  </div>
+</div>
+
+<!-- BIOPSYCHOSOCIAL MODEL -->
+<div class="section-label-row">
+  <div class="line"></div>
+  <div class="lbl">Enfoque biopsicosocial transversal</div>
+  <div class="line"></div>
+</div>
+
+<div class="bio-wrap">
+  <div class="bio-grid">
+    <div class="bio-cell">
+      <div class="bio-icon"><i class="ti ti-activity" aria-hidden="true"></i></div>
+      <div class="bio-title">Factor biológico</div>
+      <div class="bio-desc">Envejecimiento cognitivo selectivo en Abe. Desarrollo diferente de Bart (no inferior). Base neurológica del procesamiento del duelo en Lisa.</div>
+    </div>
+    <div class="bio-cell">
+      <div class="bio-icon"><i class="ti ti-brain" aria-hidden="true"></i></div>
+      <div class="bio-title">Factor psicológico</div>
+      <div class="bio-desc">Herida de apego de Bart. Sabiduría emocional de Abe. Madurez cognitiva de Lisa. Identidad construida en tensión con el entorno.</div>
+    </div>
+    <div class="bio-cell">
+      <div class="bio-icon"><i class="ti ti-world" aria-hidden="true"></i></div>
+      <div class="bio-title">Factor social y cultural</div>
+      <div class="bio-desc">Springfield como entorno que condiciona opciones. Edadismo, duelo no reconocido, cultura del jazz. El contexto no determina pero sí limita.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONCLUSIONS -->
+<div class="section-label-row">
+  <div class="line"></div>
+  <div class="lbl">Hallazgos clave por personaje</div>
+  <div class="line"></div>
+</div>
+
+<div class="conclusions-wrap">
+  <div class="conclusions-grid">
+    <div class="conclusion-card c1">
+      <div class="conclusion-char">Bart · Infancia y adultez</div>
+      <div class="conclusion-insight">Una sola relación significativa puede sostener el desarrollo en condiciones adversas</div>
+      <div class="conclusion-text">El vínculo con Abe compensó años de ausencia paterna. La identidad tardó en construirse pero se construyó: desde adentro, sin pedir permiso.</div>
+    </div>
+    <div class="conclusion-card c2">
+      <div class="conclusion-char">Abe · Vejez</div>
+      <div class="conclusion-insight">La vejez no es sinónimo de renuncia ni de afectos caducados</div>
+      <div class="conclusion-text">El edadismo de Homer no es atípico: es una realidad documentada con consecuencias concretas. Las necesidades de afecto y autonomía persisten a cualquier edad.</div>
+    </div>
+    <div class="conclusion-card c3">
+      <div class="conclusion-char">Lisa · Duelo</div>
+      <div class="conclusion-insight">El dolor tiene estructura reconocible; el contexto lo hace más fácil o más difícil de elaborar</div>
+      <div class="conclusion-text">El duelo no reconocido socialmente aumenta la soledad del doliente. Tener aunque sea una figura empática puede cambiar el curso del proceso.</div>
+    </div>
+  </div>
+</div>
+
+<!-- BRIDGE TO ENGINEERING -->
+<div class="bridge-wrap">
+  <div class="bridge-title"><i class="ti ti-tools" aria-hidden="true"></i> &nbsp;Reflexión — ingeniería y desarrollo humano</div>
+  <div class="bridge-text">
+    Un sistema diseñado por alguien que comprende que sus operarios envejecen, que pierden personas queridas, que cargan historias de infancia que afectan su desempeño, será un sistema diferente al que diseña quien no lo sabe. Las personas que se sienten vistas rinden diferente a las que no. El curso devolvió al ser humano completo: no como factor de producción, sino como alguien que nació, creció en un contexto específico, construyó una identidad con lo que tenía disponible, y que un día envejecerá.
+  </div>
+  <div class="bridge-tags">
+    <span class="bridge-tag">Enfoque biopsicosocial</span>
+    <span class="bridge-tag">Identidad como proceso</span>
+    <span class="bridge-tag">Duelo con nombre</span>
+    <span class="bridge-tag">Edadismo estructural</span>
+    <span class="bridge-tag">Andamiaje afectivo</span>
+    <span class="bridge-tag">Resiliencia narrativa</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">
+    Universidad Nacional Abierta y a Distancia – UNAD &nbsp;·&nbsp;
+    Escuela de Ciencias Sociales, Artes y Humanidades<br>
+    Tarea 5 – Evaluación Final POA · Psicología y Curso de Vida · Mayo 2026
+  </div>
+  <div class="footer-right">
+    <span class="footer-tag">Erikson</span>
+    <span class="footer-tag">Piaget</span>
+    <span class="footer-tag">Vygotsky</span>
+    <span class="footer-tag">Kübler-Ross</span>
+    <span class="footer-tag">Papalia</span>
+    <span class="footer-tag">García Arce</span>
+  </div>
+</div>
+
+</body>
+</html>
